@@ -9,31 +9,16 @@ export const generateOTP = (otp_length = 6) => {
 
 	return OTP;
 };
-const {EMAIL, MAILING_ID, MAILING_SECRET, MAILING_REFRESH} = process.env;
 
-const {MAIL_TRAP_USER, MAIL_TRAP_PASS} = process.env;
+const {EMAIL, PASSWORD} = process.env;
 
 export const generateMailTransporter = () =>
 	nodemailer.createTransport({
-		service: 'Gmail',
-		host: 'smtp.gmail.com',
-		port: 2525,
+		service: 'gmail',
+		port: 465,
 		secure: true,
 		auth: {
-			type: 'OAuth2',
 			user: EMAIL,
-			clientId: MAILING_ID,
-			clientSecret: MAILING_SECRET,
-			refreshToken: MAILING_REFRESH,
+			pass: PASSWORD,
 		},
 	});
-
-// export const generateMailTransporter = () =>
-// 	nodemailer.createTransport({
-// 		host: 'smtp.mailtrap.io',
-// 		port: 2525,
-// 		auth: {
-// 			user: '7a14c5f060aaac',
-// 			pass: '6633d01c56fb57',
-// 		},
-// 	});

@@ -1,6 +1,5 @@
 import crypto from 'crypto';
 import cloudinary from '../cloud/index.js';
-import Review from '../models/Review.js';
 
 export const sendError = (res, error, statusCode = 401) => {
 	res.status(statusCode).json({error});
@@ -19,7 +18,7 @@ export const generateRandomByte = () => {
 };
 
 export const handleNotFound = (req, res) => {
-	this.sendError(res, 'Not found', 404);
+	return sendError(res, 'Page Not found!', 404);
 };
 
 export const uploadImageToCloud = async (file) => {

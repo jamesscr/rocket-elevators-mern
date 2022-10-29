@@ -1,3 +1,3 @@
-const categories = ['Computer', 'Photography', 'Crime', 'Documentary', 'Life', 'News'];
+const categories = ['Residential', 'Commercial', 'Corporate', 'Hybrid'];
 
 export default categories;

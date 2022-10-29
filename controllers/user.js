@@ -229,9 +229,14 @@ export const signIn = async (req, res, next) => {
 };
 
 export const getAllUsers = async (req, res) => {
-	const users = await User.find();
-	res.json(users);
+	try {
+		const users = await User.find();
+		return res.json(users);
+	} catch (error) {
+		return sendError(res, 'Something went wrong');
+	}
 };
+
 export const getIsAuth = (req, res) => {
 	const {user} = req;
 	res.json({
